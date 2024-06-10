@@ -257,8 +257,15 @@ kruskal_test_freq_perf <- kruskal.test(Matric_GPA ~ Party_Frequency, data = data
 print(kruskal_test_Q1)
 # non-significant effect after taking into account the violated normality assumption
 
-### QUESTION 2: 
-test
+### QUESTION 2: The impact of being in a romantic relationship(In_Romantic_Relationship) on alcohol consumption(Drinks_Per_Night)
+# Create a contingency table
+contingency_table <- table(data$In_Romantic_Relationship, data$Drinks_Per_Night)
+print(contingency_table)
+
+# Perform the chi-square test
+chi_square_test <- chisq.test(contingency_table)
+print(chi_square_test)
+
 ### QUESTION 3: The impact of alcohol consumption (Drinks_Per_Night) on failed modules (Failed_Modules)
 # Chi square test
 # Create contingency tables
@@ -295,7 +302,14 @@ chi_square_test_sim <- chisq.test(table_drinks_parental, simulate.p.value = TRUE
 # Watch results
 print(chi_square_test_sim)
 
-### QUESTION 5: Parental Relationship and Alcohol Consumption
+### QUESTION 5: Parental Approval (Parents_Approve_Alcohol) and Alcohol Consumption (Drinks_Per_Night)
+# Create a contingency table
+contingency_table <- table(data$Parents_Approve_Alcohol, data$Drinks_Per_Night)
+print(contingency_table)
+
+# Perform the chi-square test with Monte Carlo simulation
+chi_square_test <- chisq.test(contingency_table, simulate.p.value = TRUE, B = 10000)
+print(chi_square_test)
 
 ### QUESTION 6: The impact of alcohol consumption (Drinks_Per_Night) on academic performance (Matric_GPA) in males and females (Sex) (Marie)
 # Anova test
