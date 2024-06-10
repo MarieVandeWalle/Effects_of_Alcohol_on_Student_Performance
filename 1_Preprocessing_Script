@@ -46,9 +46,6 @@ data <- subset(data, select = -Classes_Missed_Due_To_Alcohol)
 # remove 2 empty lines
 data <- data[-c(225, 233),]
 
-# add column with subject ID
-data$subjID <-  1:nrow(data)
-
 # recode the variables, based on the proposed levels which can be found on the website (link at top of this script)
 # it's possible you get a warning message for Modules_Failed, In_Romantic_Relationship, Parents_Approve_Alcohol and Parental_Relationship
 # these warning occur because of missing data and are replaced by NAs. 
