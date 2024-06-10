@@ -13,7 +13,7 @@ library(dplyr)
 
 ## Load CSV file which can be retrieved on the site. 
 data <- read.csv("/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/CSAED/Stats-survey.csv") #personalize working directory
-# you get 406 observations (lines) and 17 columns
+# you get 406 observations (lines) and 17 variables (columns).
 
 ## Preprocess the data
 # rename columns to get a better overview of the variables. 
@@ -47,9 +47,11 @@ data <- subset(data, select = -Faculty)
 data <- subset(data, select = -Monthly_Allowance)
 data <- subset(data, select = -Study_Hours_Per_Week)
 data <- subset(data, select = -Classes_Missed_Due_To_Alcohol)
+# you get 406 observations (lines) and 8 variables (columns).
 
 # remove 2 empty lines
 data <- data[-c(225, 233),]
+# you get 404 observations (lines) and 8 variables (columns)
 
 # recode the variables, based on the proposed levels which can be found on the website (link at top of this script)
 # it's possible you get a warning message for Modules_Failed, In_Romantic_Relationship, Parents_Approve_Alcohol and Parental_Relationship
@@ -62,10 +64,9 @@ data <- mutate(data, In_Romantic_Relationship = recode(In_Romantic_Relationship,
 data <- mutate(data, Parents_Approve_Alcohol = recode(Parents_Approve_Alcohol, "Yes" = 0, "No" = 1))
 data <- mutate(data, Parental_Relationship = recode(Parental_Relationship, "Very close" = 0, "Close" = 1, "Fair" = 2, "Distant" = 3))
 
-
 # set type of variables
 data$Sex <- as.factor(data$Sex)
-data$Matric_GPA <- as.numeric(data$Matric_GPA)
+data$Matric_GPA <- as.numeric(data$Matric_GPA) # this is the only numeric variable in this dataset.
 data$Party_Frequency <- as.factor(data$Party_Frequency)
 data$Drinks_Per_Night <- as.factor(data$Drinks_Per_Night)
 data$Modules_Failed <- as.factor(data$Modules_Failed)
@@ -79,5 +80,3 @@ saveRDS(data, file = "/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/C
 
 # get the dataframe again
 data <- readRDS("/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/CSAED/data.rds") #personalize working directory
-
-
