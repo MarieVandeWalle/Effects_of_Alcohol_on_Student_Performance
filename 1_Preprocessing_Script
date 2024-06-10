@@ -54,10 +54,6 @@ data <- subset(data, select = -Classes_Missed_Due_To_Alcohol)
 data <- data[-c(225, 233),]
 # you get 404 observations (lines) and 8 variables (columns)
 
-# remove the observations (lines) with NAs
-data <- na.omit(data)
-# you get 399 observations (lines) and 8 variables (columns)
-
 # recode the variables, based on the proposed levels which can be found on the website (link at top of this script)
 # it's possible you get a warning message for Modules_Failed, In_Romantic_Relationship, Parents_Approve_Alcohol and Parental_Relationship
 # these warning occur because of missing data and are replaced by NAs. 
@@ -78,6 +74,10 @@ data$Modules_Failed <- as.factor(data$Modules_Failed)
 data$In_Romantic_Relationship <- as.factor(data$In_Romantic_Relationship)
 data$Parents_Approve_Alcohol <- as.factor(data$Parents_Approve_Alcohol)
 data$Parental_Relationship <- as.factor(data$Parental_Relationship)
+
+# remove the remaining observations (lines) with NAs
+data <- na.omit(data)
+# you get 394 observations (lines) and 8 variables (columns)
 
 ## Save the dataframe. We all performed the analyses on the saved dataframe to ensure we work with the exact same dataframe. 
 # save dataframe
