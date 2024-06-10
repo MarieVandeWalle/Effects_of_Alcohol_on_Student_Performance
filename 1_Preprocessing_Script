@@ -5,7 +5,9 @@
 # Note that we added the preprocessed dataframe (data.rds) in the GitHub repository. You can skip this script and download it to perform the analyses without completing this script. 
 ## Install and load packages needed for the preprocessing of the data
 install.packages("tidyverse")
+install.packages("dplyr")        
 library(tidyverse)
+library(dplyr)
 
 ## Load CSV file which can be retrieved on the site. 
 data <- read.csv("/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/CSAED/Stats-survey.csv") #personalize working directory
