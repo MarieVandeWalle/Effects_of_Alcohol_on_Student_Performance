@@ -1,4 +1,5 @@
 ##### PERFORM THE ANALYSES #####
+# the easiest way to perform the analyses yourself is by copying this code (not downloading it), and paste it in an Rscript in RStudio. 
 
 ############################
 ### Descriptive analysis ###
