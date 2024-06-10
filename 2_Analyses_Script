@@ -57,20 +57,54 @@ fails_distribution_table <- table(data$Drinks_Per_Night, data$Modules_Failed)
 print(fails_distribution_table)
 
 # QUESTION 4: Parental Approval and Alcohol Consumption
-# Percentage of students with parental approval of alcohol consumption
-approval_table <- table(data$Parents_Approve_Alcohol)
-print(approval_table)
-
-# Distribution of alcohol consumption by approval status
-drinks_approval_table <- table(data$Drinks_Per_Night, data$Parents_Approve_Alcohol)
-print(drinks_approval_table)
+# Hypothesis 4: Parental Approval and Alcohol Consumption
+# Create the contingency table
+drinks_parentalapproval_table <- table(data$Drinks_Per_Night, data$Parents_Approve_Alcohol)
+print(drinks_parentalapproval_table)
 
 # Calculate column totals
-col_totals <- colSums(drinks_approval_table)
+col_totals <- colSums(drinks_parentalapproval_table)
 
 # Convert frequencies to percentages
-drinks_approval_percent <- sweep(drinks_approval_table, 2, col_totals, FUN = "/") * 100
-print(drinks_approval_percent)
+drinks_parentalapproval_percent <- sweep(drinks_parentalapproval_table, 2, col_totals, FUN = "/") * 100
+print(drinks_parentalapproval_percent)
+
+#### Interpretation of significant relationship of Hypothesis 5 
+# Load the necessary packages
+library(dplyr)
+library(ggplot2)
+
+# Filter out rows with NA in Parental_Relationship
+data <- data %>% filter(!is.na(Parents_Approve_Alcohol))
+
+ggplot(data, aes(x = Parents_Approve_Alcohol, fill = Drinks_Per_Night)) +
+  geom_bar(position = "fill") +
+  xlab("Parental Approval of Alcohol") +
+  ylab("Proportion") +
+  ggtitle("Proportion of Alcohol Consumption by Parental Approval of Alcohol") +
+  labs(fill = "Drinks Per Night") +
+  scale_fill_discrete(labels = c("0", "1-3", "3-5", "5-8", "8+")) +
+  scale_x_discrete(labels = c("Yes", "No"))
+
+
+# Calculate the distribution of alcohol consumption by parental approval
+drinks_parentalapproval_table <- table(data$Drinks_Per_Night, data$Parents_Approve_Alcohol)
+
+# Calculate the percentages
+col_totals <- colSums(drinks_parentalapproval_table)
+drinks_parentalapproval_percent <- sweep(drinks_parentalapproval_table, 2, col_totals, FUN = "/") * 100
+
+# Print the frequency table and percentage table
+print(drinks_parentalapproval_table)
+print(drinks_parentalapproval_percent)
+
+# Calculate the average alcohol consumption by parental relationship
+mean_drinks_parentalapproval <- data %>%
+  group_by(Parents_Approve_Alcohol) %>%
+  summarise(mean_drinks = mean(as.numeric(as.character(Drinks_Per_Night)), na.rm = TRUE))
+
+print(mean_drinks_parentalapproval)
+
 
 # QUESTION 5: Parental Relationship and Alcohol Consumption
 # Create the contingency table
