@@ -1,8 +1,10 @@
 ##### EFFECTS OF ALCOHOL ON STUDENT PERFORMANCE #####
 # The dataset is a CSV-file and can be retrieved on https://www.kaggle.com/datasets/joshuanaude/effects-of-alcohol-on-student-performance. 
+# You can download this CSV-file and paste it in your working directory folder
+# The easiest way to preprocess the data yourself is by copying this code (not downloading it), and paste it in an Rscript in RStudio. 
+# Note that we added the preprocessed dataframe (data.rds) in the GitHub repository. You can skip this script and download it to perform the analyses without completing this script. 
 
 ### PREPARE THE DATASET TO PERFORM THE ANALYSES ###
-# Note that we added the preprocessed dataframe (data.rds) in the GitHub repository. You can skip this script and download it to perform the analyses without completing this script. 
 ## Install and load packages needed for the preprocessing of the data
 install.packages("tidyverse")
 install.packages("dplyr")        
