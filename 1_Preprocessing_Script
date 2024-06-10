@@ -79,5 +79,5 @@ data$Parental_Relationship <- as.factor(data$Parental_Relationship)
 # save dataframe
 saveRDS(data, file = "/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/CSAED/data.rds") #personalize working directory
 
-# get the dataframe again
+# get the dataframe again and call it "data"
 data <- readRDS("/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/CSAED/data.rds") #personalize working directory
