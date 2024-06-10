@@ -258,7 +258,7 @@ print(kruskal_test_Q1)
 # non-significant effect after taking into account the violated normality assumption
 
 ### QUESTION 2: 
-
+test
 ### QUESTION 3: The impact of alcohol consumption (Drinks_Per_Night) on failed modules (Failed_Modules)
 # Chi square test
 # Create contingency tables
