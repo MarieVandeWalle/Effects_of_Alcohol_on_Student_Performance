@@ -13,6 +13,7 @@ library(dplyr)
 
 ## Load CSV file which can be retrieved on the site. 
 data <- read.csv("/Users/marievandewalle/Documents/PSYCHOLOGIE/Master/ma 2/CSAED/Stats-survey.csv") #personalize working directory
+# you get 406 observations (lines) and 17 columns
 
 ## Preprocess the data
 # rename columns to get a better overview of the variables. 
