@@ -81,7 +81,19 @@ ggplot(data, aes(x = Parents_Approve_Alcohol, fill = Drinks_Per_Night)) +
   ggtitle("Proportion of Alcohol Consumption by Parental Approval of Alcohol") +
   labs(fill = "Drinks Per Night") +
   scale_fill_discrete(labels = c("0", "1-3", "3-5", "5-8", "8+")) +
-  scale_x_discrete(labels = c("Yes", "No"))
+  scale_x_discrete(labels = c("Yes", "No")) +
+  theme(
+    panel.background = element_blank(), # To remove the grey background for visual purposes
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    text = element_text(size = 16),  # Adjusts overall text size
+    axis.title = element_text(size = 16),  # Adjusts axis titles
+    axis.text = element_text(size = 14),   # Adjusts axis text
+    legend.title = element_text(size = 16),  # Adjusts legend title
+    legend.text = element_text(size = 14),   # Adjusts legend text
+    plot.title = element_text(size = 18)   # Adjusts plot title
+  )
 
 # Calculate the distribution of alcohol consumption by parental approval
 drinks_parentalapproval_table <- table(data$Drinks_Per_Night, data$Parents_Approve_Alcohol)
@@ -115,7 +127,19 @@ ggplot(data, aes(x = Parental_Relationship, fill = Drinks_Per_Night)) +
   ggtitle("Proportion of Alcohol Consumption by Parental Relationship Quality") +
   labs(fill = "Drinks Per Night") +
   scale_fill_discrete(labels = c("0", "1-3", "3-5", "5-8", "8+")) +
-  scale_x_discrete(labels = c("Very Close", "Close", "Fair", "Distant"))
+  scale_x_discrete(labels = c("Very Close", "Close", "Fair", "Distant")) +
+  theme(
+    panel.background = element_blank(), # No grey background for visual purposes
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    text = element_text(size = 16),  # Adjusts overall text size
+    axis.title = element_text(size = 16),  # Adjusts axis titles
+    axis.text = element_text(size = 14),   # Adjusts axis text
+    legend.title = element_text(size = 16),  # Adjusts legend title
+    legend.text = element_text(size = 14),   # Adjusts legend text
+    plot.title = element_text(size = 18)   # Adjusts plot title
+  )
 
 # Calculate the average alcohol consumption by parental relationship
 mean_drinks_parental <- data %>%
